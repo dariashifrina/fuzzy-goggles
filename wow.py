@@ -29,9 +29,19 @@ def group_freq(book, word_list):
 
 
 # direct bash approach; not sure how to optimize
+# def most_freq(book):
+#     freq = [(x, word_freq(book, x)) for x in book]
+#     return max(freq)[0]
+
+# new faster way, but it doesn't use reduce/list comprehension
 def most_freq(book):
-    freq = [(x, word_freq(book, x)) for x in book]
-    return max(freq)[0]
+    temp = {}
+    for x in book:
+        if x in temp:
+            temp[x] = temp[x] + 1
+        else:
+            temp[x] = 1
+    return temp[max(temp)]
 
 
 ################################################################################
