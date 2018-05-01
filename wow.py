@@ -27,6 +27,11 @@ def group_freq(book, word_list):
     freq = [word_freq(book, x) for x in word_list]
     return reduce((lambda x, y: x + y), freq)
 
+def phrase_freq(book, phrase):
+    phrase_split = phrase.split()
+    #freq = [1 for x in len(book) if phrase_split == book[x: x + len(phrase_split) ]]
+    #return reduce((lambda x,y: x+y,freq))
+
 
 # direct bash approach; not sure how to optimize
 def most_freq(book):
@@ -45,8 +50,10 @@ print("frequency of 'dog' in the book:")
 print word_freq(words, "dog")
 print("frequency of 'the' and 'dog' in the book:")
 print group_freq(words, ["the", "dog"])
+print("frequency of 'in the' in the book:")
+print phrase_freq(words, "in the")
 
 # most_freq takes a very long time to process
 
-# print("most frequent word:")
-# print most_freq(words)
+print("most frequent word:")
+print most_freq(words)
