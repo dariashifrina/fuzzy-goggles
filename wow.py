@@ -27,10 +27,12 @@ def group_freq(book, word_list):
     freq = [word_freq(book, x) for x in word_list]
     return reduce((lambda x, y: x + y), freq)
 
+
 def phrase_freq(book, phrase):
     phrase_split = phrase.split()
-    #freq = [1 for x in len(book) if phrase_split == book[x: x + len(phrase_split) ]]
-    #return reduce((lambda x,y: x+y,freq))
+    n = len(phrase_split)
+    freq = [1 if phrase == reduce((lambda x, y: x + " " + y), book[book.index(x):book.index(x)+n]) else 0 for x in book]
+    return reduce((lambda x, y: x+y, freq))
 
 
 # direct bash approach; not sure how to optimize
